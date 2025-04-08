@@ -41,6 +41,10 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 - Mobile-first workflow
 - Responsive design (media query)
 
+## Improved with
+
+- Autoprefixer to increase browser coverage
+
 ## Tested with
 
 - W3C Markup validation service
@@ -153,7 +157,6 @@ html {
 **Responsive typography with `rem` units:**
 
 - [Size Matters: Balancing Line Length And Font Size In Responsive Web Design](https://www.smashingmagazine.com/2014/09/balancing-line-length-font-size-responsive-web-design/)
--
 
 > [Size Matters: Balancing Line Length And Font Size In Responsive Web Design](https://www.smashingmagazine.com/2014/09/balancing-line-length-font-size-responsive-web-design/): "A good font size (not too big) promotes horizontal eye motion. A good font size with the proper line height will help your readers find what they’re looking for."
 
