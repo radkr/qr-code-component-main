@@ -14,44 +14,54 @@
 }
 
 .qr-code-dialog {
+  font-size: 1rem;
+  padding: 1em; /*16px at default font-size*/
+  padding-bottom: 2.5em; /*40px at default font-size*/
   margin: 0;
+  width: 20em; /*320px at default font-size*/
+  max-width: 85vw; /*320px at viewport width 375px*/
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--white);
   border-width: 0;
-  border-radius: 20px;
-  width: 320px;
-  height: 499px;
-  box-shadow: 0 0px 32px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 1.25em; /*20px at default font-size*/
+  box-shadow: 0 0 2em 0 rgba(0, 0, 0, 0.1); /*32px at default font-size*/
 }
 
 .qr-code-dialog__qr-code {
   width: 100%;
-  border-radius: 10px;
-  margin-bottom: 24px;
+  border-radius: 0.625em; /*10px at default font-size*/
+  margin-bottom: 1.5em; /*24px at default font-size*/
 }
 
 .qr-code-dialog__description {
-  padding: 0 16px;
+  padding: 0 1em; /*16px at default font-size*/
   font-family: Outfit;
   text-align: center;
 }
 
 .qr-code-dialog__pitch {
-  margin: 0 0 16px 0;
-  color: var(--slate-900);
   text-align: center;
-  font-size: 22px;
+  font-size: 1.375em; /*22px at default font-size*/
   font-weight: 700;
   line-height: 120%;
+  margin: 0 0 0.7272em 0; /*16px at default font-size*/
+  color: var(--slate-900);
 }
 
 .qr-code-dialog__todo {
   margin: 0;
   color: var(--slate-500);
-  font-size: 15px;
+  font-size: 0.9375em; /*15px at default font-size*/
   font-weight: 400;
   line-height: 140%;
+}
+
+@media (min-width: 40rem) {
+  /*640px at default font-size*/
+  .qr-code-dialog {
+    max-width: none;
+  }
 }
