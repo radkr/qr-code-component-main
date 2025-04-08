@@ -14,11 +14,15 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
   - [Iterations](#iterations)
     - [Iteration 1](#iteration-1)
     - [Iteration 2](#iteration-2)
+    - [Iteration 3](#iteration-3)
   - [What I learned](#what-i-learned)
     - [CSS font @import](#css-font-import)
     - [Markup validation](#markup-validation)
     - [Accessibility Evaluation](#accessibility-evaluation)
     - [Browser font size setting](#browser-font-size-setting)
+    - [Next.js CSS modules](#nextjs-css-modules)
+    - [Next.js fonts](#nextjs-fonts)
+    - [Next.js favicon](#nextjs-favicon)
   - [Useful resources](#useful-resources)
 
 # Overview
@@ -61,6 +65,10 @@ Show the styled QR code component on the page so the customers can easily naviga
 ### Iteration 2
 
 Ensure web accessibility by allowing users to adjust font sizes to their preference.
+
+### Iteration 3
+
+Refactor the plain html and css code into a next.js project to allow creating an actual React component.
 
 ## What I learned
 
@@ -108,6 +116,26 @@ In addition,
 - limited the width of the component to the 85% of the viewport width to prevent the component get out of sight at browser font size settings higher than 16px.
 
 So I achieved the desktop and mobile view to look the same as in the design at default browser setting, and be reponsive upon its change.
+
+### Next.js CSS modules
+
+In Next.js projects the recommended way of styling components is writing CSS modules and importing them into the javascript code. CSS Modules locally scope CSS by generating unique class names. This allows you to use the same class in different files without worrying about collisions.
+
+```javascript
+import styles from "./page.module.css";
+//...
+<dialog className={styles.dialog} open>
+```
+
+One implication is that it is generally recommended to leave css BEM naming convention behind when using CSS Modules since its primary purpose is to solve the global namespace problem in CSS. In addition, using camelCase in CSS Modules is actually common and recommended.
+
+### Next.js fonts
+
+The `next/font` module automatically optimizes fonts and removes external network requests for improved privacy and performance. It includes built-in automatic self-hosting for any font file. The fonts should be imported in the `layout.js` file and added for example to the `<html>` element's style as custom CSS properties.
+
+### Next.js favicon
+
+Next.js support favicons with `.ico` extension only.
 
 ## Useful resources
 

@@ -1,26 +1,4 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: >0.3%,last 5 version,not dead
-*/
-
-:root {
-  --white: hsl(0, 0%, 100%);
-  --slate-300: hsl(212, 45%, 89%);
-  --slate-500: hsl(216, 15%, 48%);
-  --slate-900: hsl(218, 44%, 22%);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.content {
-  background-color: var(--slate-300);
-}
-
-.qr-code-dialog {
+.dialog {
   font-size: 1rem;
   padding: 1em; /*16px at default font-size*/
   padding-bottom: 2.5em; /*40px at default font-size*/
@@ -38,19 +16,20 @@
   box-shadow: 0 0 2em 0 rgba(0, 0, 0, 0.1); /*32px at default font-size*/
 }
 
-.qr-code-dialog__qr-code {
+.qrCode {
   width: 100%;
+  height: auto;
   border-radius: 0.625em; /*10px at default font-size*/
   margin-bottom: 1.5em; /*24px at default font-size*/
 }
 
-.qr-code-dialog__description {
+.description {
   padding: 0 1em; /*16px at default font-size*/
-  font-family: Outfit;
+  font-family: var(--font-outfit-sans);
   text-align: center;
 }
 
-.qr-code-dialog__pitch {
+.pitch {
   text-align: center;
   font-size: 1.375em; /*22px at default font-size*/
   font-weight: 700;
@@ -59,7 +38,7 @@
   color: var(--slate-900);
 }
 
-.qr-code-dialog__todo {
+.todo {
   margin: 0;
   color: var(--slate-500);
   font-size: 0.9375em; /*15px at default font-size*/
@@ -69,7 +48,7 @@
 
 @media (min-width: 40rem) {
   /*640px at default font-size*/
-  .qr-code-dialog {
+  .dialog {
     max-width: none;
   }
 }
