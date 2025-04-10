@@ -15,6 +15,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
     - [Iteration 1](#iteration-1)
     - [Iteration 2](#iteration-2)
     - [Iteration 3](#iteration-3)
+    - [Iteration 4](#iteration-4)
   - [What I learned](#what-i-learned)
     - [CSS font @import](#css-font-import)
     - [Markup validation](#markup-validation)
@@ -23,6 +24,10 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
     - [Next.js CSS modules](#nextjs-css-modules)
     - [Next.js fonts](#nextjs-fonts)
     - [Next.js favicon](#nextjs-favicon)
+    - [Next.js naming conventions](#nextjs-naming-conventions)
+    - [Next.js path convenient feature](#nextjs-path-convenient-feature)
+    - [Unit test scope](#unit-test-scope)
+    - [CSS modules vs. CSS inheritance](#css-modules-vs-css-inheritance)
   - [Useful resources](#useful-resources)
 
 # Overview
@@ -45,6 +50,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 - CSS custom properties
 - Mobile-first workflow
 - Responsive design (media query)
+- Next.js + React.js
 
 ## Improved with
 
@@ -55,6 +61,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 - W3C Markup validation service
 - WAVE Web Accessibility Evaluation Tool
 - Accessibility Insights
+- Jest + React Testing Library
 
 ## Iterations
 
@@ -69,6 +76,10 @@ Ensure web accessibility by allowing users to adjust font sizes to their prefere
 ### Iteration 3
 
 Refactor the plain html and css code into a next.js project to allow creating an actual React component.
+
+### Iteration 4
+
+Refactor the QR Code Component into a React functional component to allow displaying it upon user interaction.
 
 ## What I learned
 
@@ -137,6 +148,47 @@ The `next/font` module automatically optimizes fonts and removes external networ
 
 Next.js support favicons with `.ico` extension only.
 
+### Next.js naming conventions
+
+It is generally recommended and Next.js follows the same practice to name component files with `kebab-case` and components with `UpperCamelCase`.
+
+Apart from routing folder and file conventions, Next.js is unopinionated about how one organize and colocate the project files. I choosed that I place my component files under the `app/_components/<component-name>` folder.
+
+### Next.js path convenient feature
+
+Next.js provides a way to write path relative to the root folder easily. This can be conveinent to use especially when importing from the public folder.
+
+```javascript
+import qrCodeImg from "@/public/image-qr-code.png";
+```
+
+### Unit test scope
+
+**Best Practices:**
+
+- Focus on Functionality: Many developers argue that testing should primarily focus on functionality and user behavior, rather than implementation details like styles.
+- Prioritize Critical Styles: Focus on testing styles of critical UI elements that have a significant impact on the user experience or that are essential for accessibility (e.g., color contrast, font sizes).
+- Use toHaveStyle Sparingly: Testing Library's toHaveStyle matcher can be useful, but avoid overusing it. Focus on testing the overall visual appearance rather than specific CSS properties.
+- Consider Visual Regression Testing: Explore visual regression testing tools (e.g., Percy, Chromatic) for more comprehensive style testing.
+- Test CSS Classes: If you are using css modules, or styled components, testing that the correct css classes are applied can be more stable than testing raw styles.
+- Balance: Find a balance between testing styles and focusing on functionality. Don't let style testing become a bottleneck in your development process.
+
+### CSS modules vs. CSS inheritance
+
+CSS modules fundamentally alter the way CSS inheritance works. While some CSS properties naturally inherit (like font-size or color), the local scoping of CSS modules can sometimes create unexpected results when you expect those inherited values to propagate.
+
+To ensure consistent styling, developers often need to explicitly set inherited properties within each component's CSS module, rather than relying on implicit inheritance. In some cases, you might need to define global styles for certain inherited properties (like `font-family` or `line-height`). However, this should be done sparingly to avoid the global conflicts that CSS modules are designed to prevent.
+
+Next.js, however, specifies in what order CSS module stylesheets are merged into one common stylesheet upon optimization: "The CSS order is determined by the order in which you import the stylesheets into your application code."
+
+To maintain a predictable order, we recommend the following:
+
+- Only import a CSS file in a single JS/TS file.
+- If using global class names, import the global styles in the same file in the order you want them to be applied.
+- Prefer CSS Modules over global styles.
+- Use a consistent naming convention for your CSS modules. For example, using `<name>.module.css` over `<name>.tsx`.
+- Extract shared styles into a separate shared component.
+
 ## Useful resources
 
 **Html void elements:**
@@ -192,3 +244,9 @@ html {
 > [Size Matters: Balancing Line Length And Font Size In Responsive Web Design](https://www.smashingmagazine.com/2014/09/balancing-line-length-font-size-responsive-web-design/): "The Ideal Measure: 45 To 75 Characters. \[...\] I’ve found, however, that we can reliably broaden the range to 45 to 85 characters (including spaces and punctuation) per line for web pages."
 
 > [Size Matters: Balancing Line Length And Font Size In Responsive Web Design](https://www.smashingmagazine.com/2014/09/balancing-line-length-font-size-responsive-web-design/): "A good font size (not too small) is readable. A good font size (not too big) promotes horizontal eye motion. A good font size with the proper line height will help your readers find what they’re looking for."
+
+**Next.js:**
+
+- [Next.js Component Naming Conventions: Best Practices for File and Component Names](https://dev.to/vikasparmar/nextjs-component-naming-conventions-best-practices-for-file-and-component-names-39o2)
+- [CSS Modules and Global Styles - Ordering and Merging](https://nextjs.org/docs/14/app/building-your-application/styling/css-modules#ordering-and-merging)
+- [Project Organization and File Colocation](https://nextjs.org/docs/14/app/building-your-application/routing/colocation)

@@ -46,6 +46,7 @@ next-env.d.ts
 #####################################################
 *.sketch
 *.fig
+design/README.md
 
 # Avoid accidental XD upload if you convert the design file
 ###############################################
