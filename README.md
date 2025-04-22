@@ -16,6 +16,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
     - [Iteration 2](#iteration-2)
     - [Iteration 3](#iteration-3)
     - [Iteration 4](#iteration-4)
+    - [iteration 5](#iteration-5)
   - [What I learned](#what-i-learned)
     - [CSS font @import](#css-font-import)
     - [Markup validation](#markup-validation)
@@ -26,16 +27,23 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
     - [Next.js favicon](#nextjs-favicon)
     - [Next.js naming conventions](#nextjs-naming-conventions)
     - [Next.js path convenient feature](#nextjs-path-convenient-feature)
+    - [Next.js and React createPortal](#nextjs-and-react-createportal)
     - [Unit test scope](#unit-test-scope)
     - [CSS modules vs. CSS inheritance](#css-modules-vs-css-inheritance)
+    - [Jest does not support dialog](#jest-does-not-support-dialog)
   - [Useful resources](#useful-resources)
 
 # Overview
 
 ## Screenshot
 
-![Screenshot at default font size and desktop view](./screenshots/screenshot.png)
-![Screenshot at default very large font size and mobile view](./screenshots/screenshot_veryl_375.png)
+**Medium browser font size in desktop view:**
+
+![Screenshot at medium browser font size in desktop view](./screenshots/screenshot.png)
+
+**Very large browser font size in mobile view:**
+
+![Screenshot at very large browser font size in mobile view](./screenshots/screenshot_veryl_375.png)
 
 ## Links
 
@@ -51,6 +59,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 - Mobile-first workflow
 - Responsive design (media query)
 - Next.js + React.js
+- React createPortal, useEffect, useState, useRef
 
 ## Improved with
 
@@ -61,7 +70,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 - W3C Markup validation service
 - WAVE Web Accessibility Evaluation Tool
 - Accessibility Insights
-- Jest + React Testing Library
+- Jest + React Testing Library + User Event Testing Library
 
 ## Iterations
 
@@ -80,6 +89,10 @@ Refactor the plain html and css code into a next.js project to allow creating an
 ### Iteration 4
 
 Refactor the QR Code Component into a React functional component to allow displaying it upon user interaction.
+
+### Iteration 5
+
+Show and hide the QR Code Component as a modal upon user interaction.
 
 ## What I learned
 
@@ -162,6 +175,12 @@ Next.js provides a way to write path relative to the root folder easily. This ca
 import qrCodeImg from "@/public/image-qr-code.png";
 ```
 
+### Next.js and React createPortal
+
+Next.js may run React component code on server before actually mounting them in the browser. This can cause problems without special attention when using React create Portal feature as querying the DOM for an element to manipulate.
+
+I followed the [example code](https://github.com/vercel/next.js/tree/canary/examples/with-portals) officially provided by Vercel (Next.js) and I return actual content only if the component has been mounted.
+
 ### Unit test scope
 
 **Best Practices:**
@@ -172,6 +191,8 @@ import qrCodeImg from "@/public/image-qr-code.png";
 - Consider Visual Regression Testing: Explore visual regression testing tools (e.g., Percy, Chromatic) for more comprehensive style testing.
 - Test CSS Classes: If you are using css modules, or styled components, testing that the correct css classes are applied can be more stable than testing raw styles.
 - Balance: Find a balance between testing styles and focusing on functionality. Don't let style testing become a bottleneck in your development process.
+
+Use the triple A method: Arrange, Act, Assert
 
 ### CSS modules vs. CSS inheritance
 
@@ -188,6 +209,42 @@ To maintain a predictable order, we recommend the following:
 - Prefer CSS Modules over global styles.
 - Use a consistent naming convention for your CSS modules. For example, using `<name>.module.css` over `<name>.tsx`.
 - Extract shared styles into a separate shared component.
+
+### Jest does not support dialog
+
+So the test throw error as showModal is not a function in test react testing library.
+
+Work around:
+
+```javascript
+beforeAll(() => {
+  HTMLDialogElement.prototype.show = jest.fn();
+  HTMLDialogElement.prototype.showModal = jest.fn();
+  HTMLDialogElement.prototype.close = jest.fn();
+});
+```
+
+### Next.js testing setup
+
+https://nextjs.org/docs/app/building-your-application/testing/jest
+
+> `npm install -D eslint-plugin-jest-dom eslint-plugin-testing-library`
+
+#### eslint.config.mjs
+
+```javascript
+//...
+
+const eslintConfig = [
+  ...compat.extends([
+    "next/core-web-vitals",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
+  ]),
+];
+
+//...
+```
 
 ## Useful resources
 
@@ -250,3 +307,10 @@ html {
 - [Next.js Component Naming Conventions: Best Practices for File and Component Names](https://dev.to/vikasparmar/nextjs-component-naming-conventions-best-practices-for-file-and-component-names-39o2)
 - [CSS Modules and Global Styles - Ordering and Merging](https://nextjs.org/docs/14/app/building-your-application/styling/css-modules#ordering-and-merging)
 - [Project Organization and File Colocation](https://nextjs.org/docs/14/app/building-your-application/routing/colocation)
+
+**Testing:**
+
+- [Jest API](https://jestjs.io/docs/api)
+- [Jest for React](https://github.com/testing-library/jest-dom)
+- [React Testing Library API](https://testing-library.com/docs/react-testing-library/api)
+- [React Testing Library Example](https://www.robinwieruch.de/react-testing-library/)

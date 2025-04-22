@@ -1,0 +1,19 @@
+.modal {
+  font-size: 1rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: none;
+  background: none;
+  outline: none;
+  max-width: none;
+  max-height: none;
+  border-radius: 1.25em; /*20px at default font-size*/
+  box-shadow: 0 0 2em 0 rgba(0, 0, 0, 0.1); /*32px at default font-size*/
+}
+
+.modal::backdrop {
+  background: none;
+}

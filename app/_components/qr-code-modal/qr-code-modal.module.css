@@ -1,19 +1,12 @@
-.dialog {
-  font-size: 1rem;
+.modal {
   padding: 1em; /*16px at default font-size*/
   padding-bottom: 2.5em; /*40px at default font-size*/
   margin: 0;
   width: 20em; /*320px at default font-size*/
   max-width: 85vw; /*320px at viewport width 375px*/
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  height: fit-content;
   background-color: var(--white);
   border-width: 0;
-  border-radius: 1.25em; /*20px at default font-size*/
-  box-shadow: 0 0 2em 0 rgba(0, 0, 0, 0.1); /*32px at default font-size*/
 }
 
 .qrCode {
