@@ -2,6 +2,35 @@
 
 This is a solution to the [QR code component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/qr-code-component-iux_sIO_H). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
+With my solution I went a bit further and created a
+
+- Next.js site deployed on github pages that is
+- dinamically adjusts to the browser's default font size and is
+- reponsive but still
+- stick to the Frontend Mentor's design when the default font size is 16px.
+
+My QR Code Component is a
+
+- React functional component that is
+- inserted into a Modal component
+- shown by default or when the user clicks anywhere on the empty page and
+- hide on pressing the ESC key or clicking on the backdrop.
+
+I created my own Modal Component as well that is
+
+- built upon the `dialog` html element
+- directly injected into the DOM element with id `modal-root` and
+- for accessibility reasons,
+- uses the standard `showModal()` and `close()` functions to show and hide the modal.
+
+To enhance the user experiance I also
+
+- animated how the modal
+- is showing up and
+- hiding away.
+
+The unit, integration and accessibility tests increase the confidence that the site works as intended.
+
 # Table of contents
 
 - [Overview](#overview)
@@ -50,8 +79,8 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 
 ## Links
 
-- Solution URL: [TODO](https://your-solution-url.com)
-- Live Site URL: [TODO](https://your-live-site-url.com)
+- Solution URL: [On Frontend Mentor](https://www.frontendmentor.io/solutions/responsive-page-with-animated-modal-showing-the-qr-code-component-kQJrFCx7CT)
+- Live Site URL: [On Github Pages](https://radkr.github.io/qr-code-component-main/)
 
 # My process
 

@@ -6,7 +6,7 @@ import Modal from "./_components/modal/modal";
 import QRCodeModal from "./_components/qr-code-modal/qr-code-modal";
 
 export default function Home() {
-  const [isQrCodeModalOpen, setIsQrCodeModalOpen] = useState(false);
+  const [isQrCodeModalOpen, setIsQrCodeModalOpen] = useState(true);
 
   function handleClick() {
     setIsQrCodeModalOpen(true);
