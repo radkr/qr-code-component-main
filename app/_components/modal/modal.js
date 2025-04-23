@@ -55,7 +55,6 @@ export default function Modal({ open, onClose, children }) {
   return isMounted
     ? createPortal(
         <dialog
-          role="dialog"
           className={style.modal}
           ref={dialogRef}
           onClose={onClose}
