@@ -11,9 +11,43 @@
   max-width: none;
   max-height: none;
   border-radius: 1.25em; /*20px at default font-size*/
+  overflow: hidden;
   box-shadow: 0 0 2em 0 rgba(0, 0, 0, 0.1); /*32px at default font-size*/
+  animation: fadeOutAnimation 0.1s ease-out forwards;
 }
 
 .modal::backdrop {
   background: none;
+}
+
+.modal[open] {
+  animation: fadeInAnimation 0.1s ease-out forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    display: block;
+    visibility: visible;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+    display: none;
+    visibility: hidden;
+  }
 }

@@ -17,6 +17,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
     - [Iteration 3](#iteration-3)
     - [Iteration 4](#iteration-4)
     - [iteration 5](#iteration-5)
+    - [iteration 6](#iteration-6)
   - [What I learned](#what-i-learned)
     - [CSS font @import](#css-font-import)
     - [Markup validation](#markup-validation)
@@ -31,6 +32,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
     - [Unit test scope](#unit-test-scope)
     - [CSS modules vs. CSS inheritance](#css-modules-vs-css-inheritance)
     - [Jest does not support dialog](#jest-does-not-support-dialog)
+    - [Unit test of animated components](#unit-test-of-animated-components)
   - [Useful resources](#useful-resources)
 
 # Overview
@@ -55,9 +57,9 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 ## Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- CSS custom properties, animation, media query
 - Mobile-first workflow
-- Responsive design (media query)
+- Responsive design
 - Next.js + React.js
 - React createPortal, useEffect, useState, useRef
 
@@ -93,6 +95,10 @@ Refactor the QR Code Component into a React functional component to allow displa
 ### Iteration 5
 
 Show and hide the QR Code Component as a modal upon user interaction.
+
+### Iteration 6
+
+Animate show and hide of the modal for better user experience.
 
 ## What I learned
 
@@ -245,6 +251,10 @@ const eslintConfig = [
 
 //...
 ```
+
+### Unit test of animated components
+
+Good practice to fire animation end event: `fireEvent.animationEnd(<DomElement>);`
 
 ## Useful resources
 

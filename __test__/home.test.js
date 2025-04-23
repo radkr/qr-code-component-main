@@ -52,6 +52,7 @@ describe(Home, () => {
     await userEvent.click(main);
     const qrCodeModalOpen = await screen.findByTestId("qr-code-modal-test-id");
     await userEvent.click(qrCodeModalOpen);
+    fireEvent.animationEnd(qrCodeModalOpen);
     const qrCodeModalClosed = screen.queryByTestId("qr-code-modal-test-id");
     //Assert
     expect(qrCodeModalClosed).not.toBeInTheDocument();
