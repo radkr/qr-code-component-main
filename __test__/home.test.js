@@ -44,15 +44,16 @@ describe(Home, () => {
     expect(qrCodeModalClosed).not.toBeInTheDocument();
   });
 
-  it("close QR Code Modal on click", async () => {
+  it("close QR Code Modal when clicking on backdrop", async () => {
     //Arrange
     render(<Home />);
     //Act
     const main = screen.getByRole("main");
     await userEvent.click(main);
-    const qrCodeModalOpen = await screen.findByTestId("qr-code-modal-test-id");
-    await userEvent.click(qrCodeModalOpen);
-    fireEvent.animationEnd(qrCodeModalOpen);
+    const dialog = (await screen.findByTestId("qr-code-modal-test-id"))
+      .parentElement;
+    await userEvent.click(dialog);
+    fireEvent.animationEnd(dialog);
     const qrCodeModalClosed = screen.queryByTestId("qr-code-modal-test-id");
     //Assert
     expect(qrCodeModalClosed).not.toBeInTheDocument();

@@ -100,6 +100,10 @@ Show and hide the QR Code Component as a modal upon user interaction.
 
 Animate show and hide of the modal for better user experience.
 
+### Iteration 7
+
+Hide the QR Code Component on clicking on backdrop instead of clicking on the component itself because it is closer to the behavior the customers are used to.
+
 ## What I learned
 
 ### CSS font @import

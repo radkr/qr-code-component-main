@@ -54,7 +54,18 @@ export default function Modal({ open, onClose, children }) {
 
   return isMounted
     ? createPortal(
-        <dialog className={style.modal} ref={dialogRef} onClose={onClose}>
+        <dialog
+          role="dialog"
+          className={style.modal}
+          ref={dialogRef}
+          onClose={onClose}
+          onClick={(event) => {
+            event.stopPropagation();
+            if (event.target == dialogRef.current) {
+              onClose();
+            }
+          }}
+        >
           {(isAnimating || open) && children}
         </dialog>,
         document.getElementById("modal-root")

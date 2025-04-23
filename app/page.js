@@ -21,7 +21,7 @@ export default function Home() {
       <div id="modal-root" />
       <main onClick={handleClick} style={{ width: "100vw", height: "100vh" }}>
         <Modal open={isQrCodeModalOpen} onClose={handleQrCodeModalClose}>
-          <QRCodeModal onClose={handleQrCodeModalClose} />
+          <QRCodeModal />
         </Modal>
       </main>
     </>
