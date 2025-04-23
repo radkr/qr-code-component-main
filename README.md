@@ -18,6 +18,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
     - [Iteration 4](#iteration-4)
     - [iteration 5](#iteration-5)
     - [iteration 6](#iteration-6)
+    - [iteration 7](#iteration-7)
   - [What I learned](#what-i-learned)
     - [CSS font @import](#css-font-import)
     - [Markup validation](#markup-validation)
